@@ -8,6 +8,7 @@ import { AddDsuComponent } from './pages/add-dsu/add-dsu.component';
 import { AddSiteComponent } from './pages/add-site/add-site.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NavigationComponent } from './shared/navigation/navigation.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     AddDsuComponent,
     AddSiteComponent,
     WelcomeComponent,
-    FooterComponent
+    FooterComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
