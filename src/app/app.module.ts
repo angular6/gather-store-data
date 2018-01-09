@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AddDsuComponent } from './pages/add-dsu/add-dsu.component';
@@ -11,6 +12,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { FormComponent } from './shared/form/form.component';
+import { ApiService } from './api.service';
 
 
 @NgModule({
@@ -27,9 +29,10 @@ import { FormComponent } from './shared/form/form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
