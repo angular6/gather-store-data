@@ -1,0 +1,57 @@
+<button (click)="addForm()">
+  Add Form</button>
+<button (click)="resetForms()">Reset Form</button>
+<div *ngFor="let form of formsArray">
+  <fieldset>
+    <legend>{{title}}</legend>
+    <!-- <div>{{form._id}}</div> -->
+    <form [formGroup]="form">
+      <div class="form-group">
+        <div class="form-control">
+          <label class="center-block">{{label1}}
+            <br>
+            <input class="form-control" formControlName="input1">
+          </label>
+          <div *ngIf="form.invalid && (form.controls.input1.touched || form.controls.input1.dirty )">
+            <div *ngIf="form.controls.input1.errors?.required">
+              Required Field
+            </div>
+            <div *ngIf="form.controls.input1.errors?.maxlength">
+              Max Lenght 20
+            </div>
+          </div>
+        </div>
+        <div class="form-control">
+          <label>{{label2}}
+            <br>
+            <input class="form-control" formControlName="input2">
+          </label>
+          <div *ngIf="form.invalid && (form.controls.input2.touched || form.controls.input2.dirty )">
+            <div *ngIf="form.controls.input2.errors?.required">
+              Required Field
+            </div>
+            <div *ngIf="form.controls.input2.errors?.maxlength">
+              Max Lenght 20
+            </div>
+          </div>
+        </div>
+        <div class="form-control">
+          <label>{{label3}}
+            <br>
+            <input class="form-control" formControlName="input3">
+          </label>
+          <div *ngIf="form.invalid && (form.controls.input3.touched || form.controls.input3.dirty )">
+            <div *ngIf="form.controls.input3.errors?.required">
+              Required Field
+            </div>
+            <div *ngIf="form.controls.input3.errors?.maxlength">
+              Max Lenght 20
+            </div>
+          </div>
+        </div>
+        <button [disabled]="form.invalid" (click)="submit(form)">Button</button>
+      </div>
+    </form>
+    <button *ngIf="form._id!=1" (click)="removeThisForm(form._id)">delete</button>
+  </fieldset>
+</div>
