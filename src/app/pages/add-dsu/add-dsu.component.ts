@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-dsu',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDsuComponent implements OnInit {
 
-  constructor() { }
+  title: string = "Add DSU"
+
+  constructor(private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle(this.title)
   }
 
 }
+
+

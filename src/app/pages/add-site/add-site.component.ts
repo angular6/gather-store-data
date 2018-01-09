@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-add-site',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSiteComponent implements OnInit {
 
-  constructor() { }
+  title: string = "Add Site"
+
+
+  constructor(
+  	private titleService: Title
+  	) {}
 
   ngOnInit() {
+    this.titleService.setTitle(this.title)
   }
 
 }
