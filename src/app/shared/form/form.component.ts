@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../api.service';
 import * as _ from 'lodash'
 
 @Component({
@@ -17,17 +18,48 @@ export class FormComponent implements OnInit {
   @Input() label1: string
   @Input() label2: string
   @Input() label3: string
+  @Input() formType: string
+  switchInputs: boolean
+  dsus: any[]
 
-  constructor() {}
+  constructor(
+    private apiService: ApiService
+  ) {}
 
   ngOnInit() {
     this.addForm()
     this.formsObjectToArray()
+    if (this.formType == "site") this.switchInputs = true
+    this.getDsus()
   }
 
+
+
+
   submit(x) {
-    console.log(x)
+
+    if (this.formType == "dsu") {
+      var sendObject = { name: x.value.input1, description: x.value.input2, cert: x.value.input3 }
+      this.apiService.post(sendObject).subscribe()
+    }
+    if (this.formType == "site") {
+      var sendObject2 = { name: x.value.input1, description: x.value.input2, dsuId: x.value.input3 }
+      this.apiService.post2(sendObject2).subscribe()
+    }
+
+
   }
+
+
+
+  getDsus() {
+    this.apiService.get().subscribe(x => {
+      let dsus = []
+      Object.keys(x).map(function(objectKey, index) { dsus.push(x[objectKey]) });
+      this.dsus = dsus
+    })
+  }
+
 
 
   addForm() {
@@ -61,15 +93,11 @@ export class FormComponent implements OnInit {
       ]),
       input2: new FormControl(null, [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(20),
       ]),
       input3: new FormControl(null, [
-        Validators.required,
-        Validators.maxLength(10),
+        //Validators.required,
       ]),
-      // number: new FormControl(null, [
-      //   Validators.required
-      // ])
     });
 
   }
