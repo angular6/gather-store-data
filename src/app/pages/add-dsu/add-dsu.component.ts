@@ -9,6 +9,10 @@ import { Title } from '@angular/platform-browser';
 export class AddDsuComponent implements OnInit {
 
   title: string = "Add DSU"
+  label1: string = "label1"
+  label2: string = "label2"
+  label3: string = "label3"
+
 
   constructor(private titleService: Title) {}
 
@@ -16,6 +20,6 @@ export class AddDsuComponent implements OnInit {
     this.titleService.setTitle(this.title)
   }
 
+
+
 }
-
-
