@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AddDsuComponent } from './pages/add-dsu/add-dsu.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddDsuComponent
   ],
   imports: [
     BrowserModule,
