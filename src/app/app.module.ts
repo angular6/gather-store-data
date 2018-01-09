@@ -10,6 +10,7 @@ import { AddSiteComponent } from './pages/add-site/add-site.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
+import { FormComponent } from './shared/form/form.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
     WelcomeComponent,
     FooterComponent,
     NavigationComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
