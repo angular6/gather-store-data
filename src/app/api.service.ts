@@ -4,24 +4,29 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
+import { Dsu } from './shared/models/dsu.model';
+import { Site } from './shared/models/site.model';
+import { DsuMap } from './shared/models/dsu-map.model';
+
 const API_URL = "http://localhost:3000"
+
 
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public post(x:any):Observable<any>{
-  	return this.http.put<any>(API_URL + '/v1/api/dsus', x)
+  public putDsu(dsu: Dsu): Observable < Dsu > {
+    return this.http.put < Dsu > (API_URL + '/v1/api/dsus', dsu)
   }
 
-  public post2(x:any):Observable<any>{
-  	return this.http.put<any>(API_URL + '/v1/api/sites', x)
+  public putSite(site: Site): Observable < Site > {
+    return this.http.put < Site > (API_URL + '/v1/api/sites', site)
   }
 
-  public get():Observable<any> {
-  	return this.http.get<any>(API_URL + '/v1/api/dsus')
+  public getDsus(): Observable < DsuMap > {
+    return this.http.get < DsuMap > (API_URL + '/v1/api/dsus')
   }
 
 }
