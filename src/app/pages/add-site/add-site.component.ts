@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-site',
   templateUrl: './add-site.component.html',
-  styleUrls: ['./add-site.component.scss']})
+  styleUrls: ['./add-site.component.scss']
+})
 
 export class AddSiteComponent implements OnInit {
 
-  title: string = "Add Site"
+  formTouched: Boolean
 
-  constructor(
-    private titleService: Title
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.titleService.setTitle(this.title)
+  ngOnInit() {}
+
+  canDeactivate() {
+    if (this.formTouched) {
+      return window.confirm('Discard changes?');
+    }
+    return true;
   }
+
+
+  touched(x:boolean) {
+    console.log(x)
+    this.formTouched = x
+  }
+
 
 }

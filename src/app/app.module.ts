@@ -14,6 +14,9 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 import { FormComponent } from './shared/form/form.component';
 import { ApiService } from './api.service';
 
+import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ApiService } from './api.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    CanDeactivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

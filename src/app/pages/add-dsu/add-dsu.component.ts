@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-dsu',
@@ -8,14 +7,25 @@ import { Title } from '@angular/platform-browser';
 })
 export class AddDsuComponent implements OnInit {
 
-  title: string = "Add DSU"
+  formTouched: boolean
 
-  constructor(private titleService: Title) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.titleService.setTitle(this.title)
+  ngOnInit() {}
+
+
+  canDeactivate() {
+    if (this.formTouched) {
+      return window.confirm('Discard changes?');
+    }
+    return true;
   }
 
+
+  touched(x: boolean) {
+    console.log(x)
+    this.formTouched = x
+  }
 
 
 }

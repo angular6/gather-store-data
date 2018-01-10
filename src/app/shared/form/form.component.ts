@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../api.service';
 import * as _ from 'lodash'
@@ -20,12 +20,14 @@ export class FormComponent implements OnInit {
   lastid: number = 0
   switchInputs: boolean
   dsus: any[]
+  submitted: boolean
 
   @Input() title: string
   @Input() label1: string
   @Input() label2: string
   @Input() label3: string
   @Input() formType: string
+  @Output() touched: EventEmitter < boolean > = new EventEmitter < boolean > ()
 
   constructor(
     private apiService: ApiService
@@ -34,6 +36,10 @@ export class FormComponent implements OnInit {
 
   private formsObjectToArray(): void {
     this.formsArray = _.values(this.formsObject)
+  }
+
+  public containsAdditionalForms(): Boolean {
+    return this.formsArray.length > 1 ? true : false
   }
 
 
@@ -50,7 +56,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
       ]),
       control3: new FormControl(null,
-        (this.formType == "site") ? [Validators.required] : null
+        (this.formType == "site") ? [Validators.required] : [Validators.min(0)]
       ),
     });
 
@@ -68,9 +74,16 @@ export class FormComponent implements OnInit {
       this.apiService.putSite(site).subscribe()
     }
 
+    formGroup.reset()
+    this.submitted = true
+    setTimeout(() => { this.touched.emit(false) }, 250)
+    setTimeout(() => { this.submitted = false }, 3000)
+
   }
 
-
+  public formTouched() {
+    this.touched.emit(true)
+  }
 
 
   public getDsus(): void {
@@ -80,8 +93,6 @@ export class FormComponent implements OnInit {
       this.dsus = dsus
     })
   }
-
-
 
   public addForm(): void {
 
