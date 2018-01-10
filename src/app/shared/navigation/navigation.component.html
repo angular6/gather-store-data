@@ -1,9 +1,8 @@
 <div class="header">
   <div class="header-title">{{headerTitle}}</div>
-<div class="btn-group">
-  <button routerLink="welcome"> Welcome </button>
-  <button routerLink="add-dsu"> DSU </button>
-  <button routerLink="add-site"> Site </button>
+  <div class="btn-group">
+    <button *ngFor="let button of buttons" routerLink="{{button.routerLink}}"
+      [class.highlighted]="button.id==highlightThisButton()" > {{button.title}}
+    </button>
+  </div>
 </div>
-</div>
-
