@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 
 import { Dsu } from './shared/models/dsu.model';
 import { Site } from './shared/models/site.model';
