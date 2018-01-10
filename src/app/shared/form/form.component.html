@@ -10,13 +10,13 @@
         <div class="form-control">
           <label class="center-block">{{label1}}
             <br>
-            <input type="text" class="form-control" formControlName="input1">
+            <input type="text" class="form-control" formControlName="control1">
           </label>
-          <div *ngIf="form.invalid && (form.controls.input1.touched || form.controls.input1.dirty )">
-            <div *ngIf="form.controls.input1.errors?.required">
+          <div *ngIf="form.invalid && (form.controls.control1.touched || form.controls.control1.dirty )">
+            <div *ngIf="form.controls.control1.errors?.required">
               Required Field
             </div>
-            <div *ngIf="form.controls.input1.errors?.maxlength">
+            <div *ngIf="form.controls.control1.errors?.maxlength">
               Max Lenght 10
             </div>
           </div>
@@ -24,13 +24,13 @@
         <div class="form-control">
           <label>{{label2}}
             <br>
-            <input type="text" class="form-control" formControlName="input2">
+            <input type="text" class="form-control" formControlName="control2">
           </label>
-          <div *ngIf="form.invalid && (form.controls.input2.touched || form.controls.input2.dirty )">
-            <div *ngIf="form.controls.input2.errors?.required">
+          <div *ngIf="form.invalid && (form.controls.control2.touched || form.controls.control2.dirty )">
+            <div *ngIf="form.controls.control2.errors?.required">
               Required Field
             </div>
-            <div *ngIf="form.controls.input2.errors?.maxlength">
+            <div *ngIf="form.controls.control2.errors?.maxlength">
               Max Lenght 20
             </div>
           </div>
@@ -39,12 +39,12 @@
           <div *ngSwitchCase=true>
             <label> {{label3}}
               <br>
-              <select class="form-control" formControlName="input3">
+              <select class="form-control" formControlName="control3">
                 <option *ngFor="let dsu of dsus" value="{{dsu.id}}" >{{dsu.name}}</option>
               </select>
             </label>
-            <div *ngIf="form.invalid && (form.controls.input3.touched || form.controls.input3.dirty )">
-              <div *ngIf="form.controls.input3.errors?.required">
+            <div *ngIf="form.invalid && (form.controls.control3.touched || form.controls.control3.dirty )">
+              <div *ngIf="form.controls.control3.errors?.required">
                 Required Field
               </div>
             </div>
@@ -53,12 +53,12 @@
             <div class="form-control">
               <label>{{label3}}
                 <br>
-                <input type="number" class="form-control" formControlName="input3" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <input type="number" class="form-control" formControlName="control3" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
               </label>
             </div>
           </div>
         </div>
-        <button [disabled]="form.invalid" (click)="submit(form)">Button</button>
+        <button [disabled]="form.invalid" (click)="submitForm(form)">Button</button>
       </div>
     </form>
     <button *ngIf="form._id!=1" (click)="removeThisForm(form._id)">delete</button>
